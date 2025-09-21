@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoleplayService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+923bef99c4c48f367c302307946b52a678ed6eda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a610a9f256607ee8d848d38e5adc662500edceb")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoleplayService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoleplayService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,41 +1,21 @@
+using RoleplayService;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// Create an instance of the in-memory repository
+var repository = new RoleplayRepository();
 
-app.UseHttpsRedirection();
+app.MapGet("/", () => "Roleplay Service is running!");
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// Endpoint to list all role actions
+app.MapGet("/api/roleplay/actions", () => repository.GetActions());
 
-app.MapGet("/weatherforecast", () =>
+// Endpoint to add a new action
+app.MapPost("/api/roleplay/actions", (RoleAction action) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    repository.AddAction(action);
+    return Results.Created($"/api/roleplay/actions/{action.Id}", action);
+});
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
