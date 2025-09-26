@@ -1,21 +1,32 @@
+using Microsoft.EntityFrameworkCore;
 using RoleplayService;
+using RoleplayService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetValue<string>("POSTGRES_CONNECTION")
+                       ?? "Host=postgres-roleplay;Port=5432;Database=roleplaydb;Username=roleplayuser;Password=roleplaypass";
+
+builder.Services.AddDbContext<RoleplayDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-// Create an instance of the in-memory repository
-var repository = new RoleplayRepository();
-
-app.MapGet("/", () => "Roleplay Service is running!");
-
-// Endpoint to list all role actions
-app.MapGet("/api/roleplay/actions", () => repository.GetActions());
-
-// Endpoint to add a new action
-app.MapPost("/api/roleplay/actions", (RoleAction action) =>
+using (var scope = app.Services.CreateScope())
 {
-    repository.AddAction(action);
-    return Results.Created($"/api/roleplay/actions/{action.Id}", action);
-});
+    var db = scope.ServiceProvider.GetRequiredService<RoleplayDbContext>();
+    db.Database.Migrate(); // ensures tables exist
+}
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.MapControllers();
 app.Run();

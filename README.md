@@ -102,3 +102,24 @@ How to Run the Service
 Optional: You can also use the Python build_and_run.py script to automate steps 3-5:
 
 python build_and_run.py
+
+Running the Roleplay Service with Docker
+
+You can run the Roleplay Service locally using Docker or pull the prebuilt image from DockerHub.
+
+1. Pull the Docker Image
+   docker pull catalinaernu/roleplayservice:1.0
+
+2. Run the Service
+   docker run -d -p 5001:5000 --name roleplayservice catalinaernu/roleplayservice:1.0
+
+Note:
+
+- The -p flag maps your local machine’s port to the container port (host:container).
+- Ensure port 5001 is free.
+- Use docker ps to see running containers.
+- Use docker stop roleplayservice and docker rm roleplayservice to stop/remove the container.
+
+3. Access the APIs
+
+- Roleplay Service: http://localhost:5001/api/roleplay/characters/101/actions

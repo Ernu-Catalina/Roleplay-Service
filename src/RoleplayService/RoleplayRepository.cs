@@ -1,32 +1,18 @@
-using System.Collections.Generic;
-using System.Linq;
+using RoleplayService.Models;
 
 namespace RoleplayService
 {
     public class RoleplayRepository
     {
-        private readonly List<RoleAction> _actions = new();
+        private readonly RoleplayDbContext _context;
+        public RoleplayRepository(RoleplayDbContext context) => _context = context;
 
-        public IEnumerable<RoleAction> GetActions() => _actions;
+        public IEnumerable<Character> GetCharacters() => _context.Characters.ToList();
 
-        public void AddAction(RoleAction action) => _actions.Add(action);
-
-        // This is the missing method
-        public RoleAction PerformAction(RoleAction action)
+        public void AddCharacter(Character c)
         {
-            // For now, just add the action to the list and mark it as success
-            action.Status = "success";
-            _actions.Add(action);
-            return action;
+            _context.Characters.Add(c);
+            _context.SaveChanges();
         }
-    }
-
-    public class RoleAction
-    {
-        public int Id { get; set; }
-        public int CharacterId { get; set; }
-        public string ActionName { get; set; } = string.Empty;
-        public int TargetId { get; set; }
-        public string Status { get; set; } = "pending";
     }
 }
