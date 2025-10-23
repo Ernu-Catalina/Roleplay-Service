@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-Service\\src\\RoleplayApi\\RoleplayApi.csproj": {}
+    "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-service\\src\\roleplayapi\\RoleplayApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-Service\\src\\RoleplayApi\\RoleplayApi.csproj": {
+    "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-service\\src\\roleplayapi\\RoleplayApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-Service\\src\\RoleplayApi\\RoleplayApi.csproj",
+        "projectUniqueName": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-service\\src\\roleplayapi\\RoleplayApi.csproj",
         "projectName": "RoleplayApi",
-        "projectPath": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-Service\\src\\RoleplayApi\\RoleplayApi.csproj",
+        "projectPath": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-service\\src\\roleplayapi\\RoleplayApi.csproj",
         "packagesPath": "C:\\Users\\OSAdmin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-Service\\src\\RoleplayApi\\obj\\",
+        "outputPath": "C:\\Users\\OSAdmin\\Documents\\UNIVERSITY\\Year_4\\PAD\\Roleplay-service\\src\\roleplayapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\OSAdmin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,6 +47,14 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.10, )"
             },
             "StackExchange.Redis": {
               "target": "Package",
