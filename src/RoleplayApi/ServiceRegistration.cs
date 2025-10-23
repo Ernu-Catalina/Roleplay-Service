@@ -25,7 +25,7 @@ public class ServiceRegistration : IHostedService, IDisposable
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         var serviceName = _config["SERVICE_NAME"] ?? "unknown-service";
-        var port = _config["PORT"] ?? "80";
+        var port = _config["PORT"] ?? "8086";
         var discoveryUrl = _config["SERVICE_DISCOVERY_URL"] ?? "http://service_discovery:8500";
 
         var registrationData = new
