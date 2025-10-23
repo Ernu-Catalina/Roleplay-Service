@@ -28,6 +28,7 @@ public class ServiceRegistration : IHostedService, IDisposable
         var port = _config["PORT"] ?? "8086";
         var discoveryUrl = _config["SERVICE_DISCOVERY_URL"] ?? "http://service_discovery:8500";
 
+
         var registrationData = new
         {
             service_name = serviceName,
