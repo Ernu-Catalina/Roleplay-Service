@@ -41,16 +41,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 // ---------------------- Health Check ----------------------
-app.MapGet("/health", () =>
-{
-    var ts = DateTime.UtcNow;
-    Console.WriteLine($"[HEALTH] Health check requested at {ts:O}");
-    return Results.Json(new
-    {
-        status = "healthy",
-        service = "roleplay-service",
-        timestamp = ts
-    });
-});
+app.MapGet("/health", () => Results.Json(new { status = "healthy" }));
 
 app.Run();
